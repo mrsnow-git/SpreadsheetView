@@ -49,21 +49,21 @@ public final class CellRange {
 }
 
 extension CellRange: Hashable {
-    public var hashValue: Int {
-        return from.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(from.hashValue)
     }
 
-    public static func ==(lhs: CellRange, rhs: CellRange) -> Bool {
-        return lhs.from == rhs.from
+    public static func == (lhs: CellRange, rhs: CellRange) -> Bool {
+        lhs.from == rhs.from
     }
 }
 
 extension CellRange: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
-        return "R\(from.row)C\(from.column):R\(to.row)C\(to.column)"
+        "R\(from.row)C\(from.column):R\(to.row)C\(to.column)"
     }
 
     public var debugDescription: String {
-        return description
+        description
     }
 }

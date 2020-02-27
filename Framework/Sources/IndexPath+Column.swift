@@ -10,7 +10,7 @@ import Foundation
 
 public extension IndexPath {
     public var column: Int {
-        return section
+        section
     }
 
     public init(row: Int, column: Int) {

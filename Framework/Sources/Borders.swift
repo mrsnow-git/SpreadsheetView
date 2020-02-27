@@ -15,7 +15,7 @@ public struct Borders {
     public var right: BorderStyle
 
     public static func all(_ style: BorderStyle) -> Borders {
-        return Borders(top: style, bottom: style, left: style, right: style)
+        Borders(top: style, bottom: style, left: style, right: style)
     }
 }
 
@@ -25,7 +25,7 @@ public enum BorderStyle {
 }
 
 extension BorderStyle: Equatable {
-    public static func ==(lhs: BorderStyle, rhs: BorderStyle) -> Bool {
+    public static func == (lhs: BorderStyle, rhs: BorderStyle) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true

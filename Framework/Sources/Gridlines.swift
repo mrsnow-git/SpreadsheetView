@@ -29,7 +29,7 @@ public enum GridStyle {
 }
 
 extension GridStyle: Equatable {
-    public static func ==(lhs: GridStyle, rhs: GridStyle) -> Bool {
+    public static func == (lhs: GridStyle, rhs: GridStyle) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true
@@ -61,6 +61,6 @@ final class Gridline: CALayer {
     }
 
     override func action(forKey event: String) -> CAAction? {
-        return nil
+        nil
     }
 }

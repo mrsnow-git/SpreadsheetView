@@ -35,12 +35,12 @@ final class ReusableCollection<Reusable>: Sequence where Reusable: NSObject {
     var addresses = Set<Address>()
 
     func contains(_ member: Address) -> Bool {
-        return addresses.contains(member)
+        addresses.contains(member)
     }
 
     @discardableResult
     func insert(_ newMember: Address) -> (inserted: Bool, memberAfterInsert: Address) {
-        return addresses.insert(newMember)
+        addresses.insert(newMember)
     }
 
     func subtract(_ other: Set<Address>) {
@@ -49,7 +49,7 @@ final class ReusableCollection<Reusable>: Sequence where Reusable: NSObject {
 
     subscript(key: Address) -> Reusable? {
         get {
-            return pairs[key]
+            pairs[key]
         }
         set(newValue) {
             pairs[key] = newValue
@@ -57,6 +57,6 @@ final class ReusableCollection<Reusable>: Sequence where Reusable: NSObject {
     }
 
     func makeIterator() -> AnyIterator<Reusable> {
-        return AnyIterator(pairs.values.makeIterator())
+        AnyIterator(pairs.values.makeIterator())
     }
 }

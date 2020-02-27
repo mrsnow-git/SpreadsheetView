@@ -24,6 +24,7 @@ final class ScrollView: UIScrollView, UIGestureRecognizerDelegate {
 
     var layoutAttributes = LayoutAttributes(startColumn: 0, startRow: 0, numberOfColumns: 0, numberOfRows: 0, columnCount: 0, rowCount: 0, insets: .zero)
     var state = State()
+    
     struct State {
         var frame = CGRect.zero
         var contentSize = CGSize.zero
@@ -31,7 +32,7 @@ final class ScrollView: UIScrollView, UIGestureRecognizerDelegate {
     }
 
     var hasDisplayedContent: Bool {
-        return columnRecords.count > 0 || rowRecords.count > 0
+        columnRecords.count > 0 || rowRecords.count > 0
     }
 
     func resetReusableObjects() {
@@ -54,11 +55,11 @@ final class ScrollView: UIScrollView, UIGestureRecognizerDelegate {
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return gestureRecognizer is UIPanGestureRecognizer
+        gestureRecognizer is UIPanGestureRecognizer
     }
 
     override func touchesShouldBegin(_ touches: Set<UITouch>, with event: UIEvent?, in view: UIView) -> Bool {
-        return hasDisplayedContent
+        hasDisplayedContent
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

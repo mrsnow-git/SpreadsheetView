@@ -52,6 +52,6 @@ extension ScrollPosition: CustomStringConvertible, CustomDebugStringConvertible 
     }
 
     public var debugDescription: String {
-        return description
+        description
     }
 }

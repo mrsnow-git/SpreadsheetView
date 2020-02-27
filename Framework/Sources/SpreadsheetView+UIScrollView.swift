@@ -11,7 +11,7 @@ import UIKit
 extension SpreadsheetView {
     public var contentOffset: CGPoint {
         get {
-            return tableView.contentOffset
+            tableView.contentOffset
         }
         set {
             tableView.contentOffset = newValue
@@ -20,7 +20,7 @@ extension SpreadsheetView {
 
     public var scrollIndicatorInsets: UIEdgeInsets {
         get {
-            return overlayView.scrollIndicatorInsets
+            overlayView.scrollIndicatorInsets
         }
         set {
             overlayView.scrollIndicatorInsets = newValue
@@ -29,13 +29,13 @@ extension SpreadsheetView {
 
     public var contentSize: CGSize {
         get {
-            return overlayView.contentSize
+            overlayView.contentSize
         }
     }
 
     public var contentInset: UIEdgeInsets {
         get {
-            return rootView.contentInset
+            rootView.contentInset
         }
         set {
             rootView.contentInset = newValue
@@ -47,7 +47,7 @@ extension SpreadsheetView {
     @available(iOS 11.0, *)
     public var adjustedContentInset: UIEdgeInsets {
         get {
-            return rootView.adjustedContentInset
+            rootView.adjustedContentInset
         }
     }
     #endif

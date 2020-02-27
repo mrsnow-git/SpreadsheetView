@@ -58,7 +58,7 @@ open class Cell: UIView {
     @available(*, deprecated: 0.6.3, renamed: "gridlines")
     public var grids: Gridlines {
         get {
-            return gridlines
+            gridlines
         }
         set {
             gridlines = grids
@@ -108,7 +108,7 @@ open class Cell: UIView {
 
 extension Cell: Comparable {
     public static func <(lhs: Cell, rhs: Cell) -> Bool {
-        return lhs.indexPath < rhs.indexPath
+        lhs.indexPath < rhs.indexPath
     }
 }
 

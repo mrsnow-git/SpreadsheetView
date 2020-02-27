@@ -105,13 +105,13 @@ extension SpreadsheetView {
     }
 
     func layoutAttributeForCornerView() -> LayoutAttributes {
-        return LayoutAttributes(startColumn: 0,
-                                startRow: 0,
-                                numberOfColumns: frozenColumns,
-                                numberOfRows: frozenRows,
-                                columnCount: frozenColumns,
-                                rowCount: frozenRows,
-                                insets: .zero)
+        LayoutAttributes(startColumn: 0,
+                         startRow: 0,
+                         numberOfColumns: frozenColumns,
+                         numberOfRows: frozenRows,
+                         columnCount: frozenColumns,
+                         rowCount: frozenRows,
+                         insets: .zero)
     }
 
     func layoutAttributeForColumnHeaderView() -> LayoutAttributes {
@@ -137,13 +137,13 @@ extension SpreadsheetView {
     }
 
     func layoutAttributeForTableView() -> LayoutAttributes {
-        return LayoutAttributes(startColumn: layoutProperties.frozenColumns,
-                                startRow: layoutProperties.frozenRows,
-                                numberOfColumns: layoutProperties.numberOfColumns,
-                                numberOfRows: layoutProperties.numberOfRows,
-                                columnCount: layoutProperties.numberOfColumns * circularScrollScalingFactor.horizontal,
-                                rowCount: layoutProperties.numberOfRows * circularScrollScalingFactor.vertical,
-                                insets: .zero)
+        LayoutAttributes(startColumn: layoutProperties.frozenColumns,
+                         startRow: layoutProperties.frozenRows,
+                         numberOfColumns: layoutProperties.numberOfColumns,
+                         numberOfRows: layoutProperties.numberOfRows,
+                         columnCount: layoutProperties.numberOfColumns * circularScrollScalingFactor.horizontal,
+                         rowCount: layoutProperties.numberOfRows * circularScrollScalingFactor.vertical,
+                         insets: .zero)
     }
 
     func resetLayoutProperties() -> LayoutProperties {

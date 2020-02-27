@@ -164,18 +164,18 @@ public class SpreadsheetView: UIView {
     ///
     /// - SeeAlso: `visibleCells`
     public var indexPathsForVisibleItems: [IndexPath] {
-        return visibleCells.map { $0.indexPath }
+        visibleCells.map { $0.indexPath }
     }
 
     public var indexPathForSelectedItem: IndexPath? {
-        return Array(selectedIndexPaths).sorted().first
+        Array(selectedIndexPaths).sorted().first
     }
 
     /// The index paths for the selected items.
     /// - Note: The value of this property is an array of IndexPath objects, each of which corresponds to a single selected item.
     /// If there are no selected items, the value of this property is nil.
     public var indexPathsForSelectedItems: [IndexPath] {
-        return Array(selectedIndexPaths).sorted()
+        Array(selectedIndexPaths).sorted()
     }
 
     /// A Boolean value that determines whether scrolling is disabled in a particular direction.
@@ -198,7 +198,7 @@ public class SpreadsheetView: UIView {
     /// - SeeAlso: `alwaysBounceHorizontal`, `alwaysBounceVertical`
     public var bounces: Bool {
         get {
-            return tableView.bounces
+            tableView.bounces
         }
         set {
             tableView.bounces = newValue
@@ -212,7 +212,7 @@ public class SpreadsheetView: UIView {
     /// - SeeAlso: `alwaysBounceHorizontal`
     public var alwaysBounceVertical: Bool {
         get {
-            return tableView.alwaysBounceVertical
+            tableView.alwaysBounceVertical
         }
         set {
             tableView.alwaysBounceVertical = newValue
@@ -226,7 +226,7 @@ public class SpreadsheetView: UIView {
     /// - SeeAlso: `alwaysBounceVertical`
     public var alwaysBounceHorizontal: Bool {
         get {
-            return tableView.alwaysBounceHorizontal
+            tableView.alwaysBounceHorizontal
         }
         set {
             tableView.alwaysBounceHorizontal = newValue
@@ -251,7 +251,7 @@ public class SpreadsheetView: UIView {
     /// The default value is false.
     public var isPagingEnabled: Bool {
         get {
-            return tableView.isPagingEnabled
+            tableView.isPagingEnabled
         }
         set {
             tableView.isPagingEnabled = newValue
@@ -264,7 +264,7 @@ public class SpreadsheetView: UIView {
     /// When scrolling is disabled, the scroll view does not accept touch events; it forwards them up the responder chain.
     public var isScrollEnabled: Bool {
         get {
-            return tableView.isScrollEnabled
+            tableView.isScrollEnabled
         }
         set {
             tableView.isScrollEnabled = newValue
@@ -274,9 +274,9 @@ public class SpreadsheetView: UIView {
 
     /// The style of the scroll indicators.
     /// - Note: The default style is `default`. See `UIScrollViewIndicatorStyle` for descriptions of these constants.
-    public var indicatorStyle: UIScrollViewIndicatorStyle {
+    public var indicatorStyle: UIScrollView.IndicatorStyle {
         get {
-            return overlayView.indicatorStyle
+            overlayView.indicatorStyle
         }
         set {
             overlayView.indicatorStyle = newValue
@@ -287,31 +287,35 @@ public class SpreadsheetView: UIView {
     /// - Note: Your application can use the `UIScrollViewDecelerationRateNormal` and UIScrollViewDecelerationRateFast` constants as reference points for reasonable deceleration rates.
     public var decelerationRate: CGFloat {
         get {
-            return tableView.decelerationRate
+            tableView.decelerationRate.rawValue
         }
         set {
-            tableView.decelerationRate = newValue
+            tableView.decelerationRate = UIScrollView.DecelerationRate(rawValue: newValue)
         }
     }
 
     public var numberOfColumns: Int {
-        return layoutProperties.numberOfColumns
+        layoutProperties.numberOfColumns
     }
+    
     public var numberOfRows: Int {
-        return layoutProperties.numberOfRows
+        layoutProperties.numberOfRows
     }
+    
     public var frozenColumns: Int {
-        return layoutProperties.frozenColumns
+        layoutProperties.frozenColumns
     }
+    
     public var frozenRows: Int {
-        return layoutProperties.frozenRows
+        layoutProperties.frozenRows
     }
+    
     public var mergedCells: [CellRange] {
-        return layoutProperties.mergedCells
+        layoutProperties.mergedCells
     }
 
     public var scrollView: UIScrollView {
-        return overlayView
+        overlayView
     }
 
     var layoutProperties = LayoutProperties()
@@ -717,25 +721,25 @@ public class SpreadsheetView: UIView {
     public func cellForItem(at indexPath: IndexPath) -> Cell? {
         if let cell = tableView.visibleCells.pairs
             .filter({ $0.key.row == indexPath.row && $0.key.column == indexPath.column })
-            .map({ return $1 })
+            .map({ $1 })
             .first {
             return cell
         }
         if let cell = rowHeaderView.visibleCells.pairs
             .filter({ $0.key.row == indexPath.row && $0.key.column == indexPath.column })
-            .map({ return $1 })
+            .map({ $1 })
             .first {
             return cell
         }
         if let cell = columnHeaderView.visibleCells.pairs
             .filter({ $0.key.row == indexPath.row && $0.key.column == indexPath.column })
-            .map({ return $1 })
+            .map({ $1 })
             .first {
             return cell
         }
         if let cell = cornerView.visibleCells.pairs
             .filter({ $0.key.row == indexPath.row && $0.key.column == indexPath.column })
-            .map({ return $1 })
+            .map({ $1 })
             .first {
             return cell
         }
@@ -747,22 +751,22 @@ public class SpreadsheetView: UIView {
         cells.append(contentsOf:
             tableView.visibleCells.pairs
                 .filter { $0.key.row == indexPath.row && $0.key.column == indexPath.column }
-                .map { return $1 }
+                .map { $1 }
         )
         cells.append(contentsOf:
             rowHeaderView.visibleCells.pairs
                 .filter { $0.key.row == indexPath.row && $0.key.column == indexPath.column }
-                .map { return $1 }
+                .map { $1 }
         )
         cells.append(contentsOf:
             columnHeaderView.visibleCells.pairs
                 .filter { $0.key.row == indexPath.row && $0.key.column == indexPath.column }
-                .map { return $1 }
+                .map { $1 }
         )
         cells.append(contentsOf:
             cornerView.visibleCells.pairs
                 .filter { $0.key.row == indexPath.row && $0.key.column == indexPath.column }
-                .map { return $1 }
+                .map { $1 }
         )
         return cells
     }
@@ -807,6 +811,6 @@ public class SpreadsheetView: UIView {
     }
 
     func mergedCell(for indexPath: Location) -> CellRange? {
-        return layoutProperties.mergedCellLayouts[indexPath]
+        layoutProperties.mergedCellLayouts[indexPath]
     }
 }
